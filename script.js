@@ -18,6 +18,7 @@ const handleValueChange = () => {
     if (parseInt(inputT.value) === 0) {
         ratio.classList.remove('active');
     } else {
+        inputT.value = parseInt(inputC.value) + parseInt(inputF.value);
         let a = 100 * parseInt(inputC.value) / parseInt(inputT.value);
         inputR.value = a.toFixed(2) + '%';
         ratio.classList.add('active');
@@ -45,30 +46,30 @@ handleValueChange();
 
 plusC.addEventListener('click', () => {
     inputC.value = parseInt(inputC.value) + 1;
-    inputT.value = parseInt(inputT.value) + 1;
     handleValueChange();
 });
 
 minusC.addEventListener('click', () => {
     if (parseInt(inputC.value) > 0 && parseInt(inputT.value) > 0) {
         inputC.value = parseInt(inputC.value) - 1;
-        inputT.value = parseInt(inputT.value) - 1;
         handleValueChange();
     }
 });
 
 plusF.addEventListener('click', () => {
     inputF.value = parseInt(inputF.value) + 1;
-    inputT.value = parseInt(inputT.value) + 1;
     handleValueChange();
 });
 
 minusF.addEventListener('click', () => {
     if (parseInt(inputF.value) > 0 && parseInt(inputT.value) > 0) {
         inputF.value = parseInt(inputF.value) - 1;
-        inputT.value = parseInt(inputT.value) - 1;
         handleValueChange();
     }
+});
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('input', handleValueChange);
 });
 
 refresh.addEventListener('click', () => {
