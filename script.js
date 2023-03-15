@@ -15,12 +15,12 @@ const copy = document.querySelector('#copy');
 const notif = document.querySelector('#notification');
 
 const handleValueChange = () => {
+    inputT.value = parseInt(inputC.value) + parseInt(inputF.value);
+    let a = 100 * parseInt(inputC.value) / parseInt(inputT.value);
+    inputR.value = a.toFixed(2) + '%';
     if (parseInt(inputT.value) === 0) {
         ratio.classList.remove('active');
     } else {
-        inputT.value = parseInt(inputC.value) + parseInt(inputF.value);
-        let a = 100 * parseInt(inputC.value) / parseInt(inputT.value);
-        inputR.value = a.toFixed(2) + '%';
         ratio.classList.add('active');
     }
     localStorage.setItem('COUNTIT-correct', inputC.value);
